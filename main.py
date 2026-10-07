@@ -1,16 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-二创项目雏形：记忆型 AI 助手（带 SQL 计费 + 多用户隔离）。
-
-演示流程：
-  1. 注册两个用户 alice / bob（各送 100 credits）
-  2. alice 记一条"买入八方股份"的记忆，bob 记一条"显卡预算"的记忆
-  3. alice 问自己的股票 → 能查到，正常回答，扣费
-  4. bob 问同一个股票问题 → 查不到（隔离生效），扣费
-  5. 打印余额，验证计费
-
-跑法：venv/Scripts/python main.py
-"""
+"""主程序：注册、记记忆、提问、按 token 扣费的完整流程演示。"""
 import os
 import sys
 import ssl

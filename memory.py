@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-记忆层：每用户一个独立 ChromaDB collection，实现多租户隔离（对应二创清单 P0.2）。
-
-原项目的问题：所有人共用一个记忆池，登录只是"验一下你是谁"，进去之后照样能
-看到别人的记忆——这就是"有认证、没授权"。这里改成每个用户一个 collection，
-物理隔离，谁也别想看谁的。
-"""
+"""记忆层：每用户独立 ChromaDB collection，多租户隔离。"""
 import chromadb
 from chromadb import Documents, EmbeddingFunction, Embeddings
 from fastembed import TextEmbedding

@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-P0 最后一环：Agent 换成真正的 function-calling（工具调用）。
-
-对比 main.py（固定「先检索再回答」），这里让 AI 自己决定要不要查记忆、查什么。
-这对应二创清单 P0.1：把原项目「让 AI 写 <SEARCH> 标签再用正则抠」的脆壳，
-换成大模型原生的工具调用信号——AI 要查就返回结构化调用，不查就直接回答。
-
-跑法：venv/Scripts/python agent.py
-"""
+"""function-calling 版 Agent：AI 自己决定是否查记忆，然后回答。"""
 import os
 import sys
 import json
@@ -78,7 +70,7 @@ def _run_tool(name, args, user):
 
 
 def ask_agent(user, question):
-    """让 AI 自己决定：要不要查记忆、查什么，然后回答。最多走 3 轮（对应原项目的 chain_length 上限）。"""
+    """让 AI 自己决定要不要查记忆，然后回答。"""
     llm = _llm()
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
@@ -151,7 +143,7 @@ def main():
     print("结论：")
     print("1. 场景1 AI 主动调用了 search_memory 工具（有 [工具调用] 日志），才回答出 38.5 元")
     print("2. 场景2 AI 判断与记忆无关，没调用工具，直接回答")
-    print("3. 这就是 function-calling 取代原项目「文字标签状态机」的效果：AI 自己决定查不查")
+    print("3. function-calling 版：AI 自己决定查不查")
 
 
 if __name__ == "__main__":

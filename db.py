@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-SQL 层：用户 + Credits 计费（对应二创清单 P0.2 安全、P0.3 计费）。
-
-用 Python 内置 sqlite3，零配置。密码只存 bcrypt 哈希，绝不存明文——
-这正是原项目 users.json 里存明文密码那个坑的正确解法。
-"""
+"""用户与 Credits 计费的 SQL 层（sqlite3 + bcrypt）。"""
 import sqlite3
 import bcrypt
 
