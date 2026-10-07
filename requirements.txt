@@ -1,0 +1,9 @@
+chromadb
+rank-bm25
+jieba
+fastembed
+openai
+httpx
+python-dotenv
+bcrypt
+pytest

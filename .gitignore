@@ -15,5 +15,10 @@ demo_chroma/
 eval_chroma/
 demo_docs/
 
+# 编辑器/系统
+.idea/
+.vscode/
+.DS_Store
+
 # 其他
 *.log
