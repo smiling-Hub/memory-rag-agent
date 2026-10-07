@@ -1,0 +1,25 @@
+# CI：每次 push / PR 自动跑单元测试
+# 说明：只跑 tests/（单元测试），不跑 eval_retrieval.py——
+# 因为检索评测要现场下载 embedding 模型，又慢又容易挂，属于本地评测，不放 CI。
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # 单元测试只依赖 bcrypt（db.py 用它做密码哈希），轻量、无需 chromadb/fastembed
+      - name: 安装依赖
+        run: pip install bcrypt pytest
+
+      - name: 跑单元测试
+        run: python -m pytest tests/ -v
