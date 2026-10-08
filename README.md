@@ -59,3 +59,7 @@ pytest tests/ -v
 - `demo_retrieval.py` — 检索演示
 - `eval_retrieval.py` — 检索评测
 - `tests/` — 单元测试
+
+## 许可证
+
+MIT License。本项目基于 [Loyal-Elephie](https://github.com/v2rockets/Loyal-Elephie)（MIT，Copyright (c) 2024 Yipeng Zhang）二次开发，详见 [LICENSE](LICENSE)。
