@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""function-calling 版 Agent：AI 自己决定是否查记忆，然后回答。"""
+"""function-calling ：AI 自己决定是否查记忆，然后回答。"""
 import os
 import sys
 import json
 import ssl
 
-# Windows 终端 UTF-8 + 全局关 SSL 校验（本机根证书缺失，仅演示用）
+# Windows 终端 UTF-8 + 全局关 SSL 校验（仅演示用）
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 ssl._create_default_https_context = ssl._create_unverified_context
 _orig = ssl.create_default_context
@@ -22,10 +22,10 @@ import memory
 CHAT_BASE_URL = "https://api.deepseek.com/v1"
 from dotenv import load_dotenv
 load_dotenv()
-CHAT_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")  # 从 .env 读，不硬编码
+CHAT_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 CHAT_MODEL_NAME = "deepseek-v4-pro"
 
-# 定义「工具」。AI 只能调用这里声明的工具，返回结构化信号，而不是猜文字标签。
+# AI 只能调用这里声明的工具，返回结构化信号，不是猜文字标签。
 TOOLS = [
     {
         "type": "function",
