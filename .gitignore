@@ -1,4 +1,4 @@
-# 敏感信息（API key 等），绝不提交
+# 敏感信息
 .env
 
 # 虚拟环境
@@ -9,7 +9,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-# 本地数据库和向量索引（这些是运行时产物，不该提交）
+# 本地数据库和向量索引
 app.db
 demo_chroma/
 eval_chroma/
