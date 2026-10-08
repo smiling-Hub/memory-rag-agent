@@ -19,12 +19,11 @@ def _unverified_context(*args, **kwargs):
     return ctx
 ssl.create_default_context = _unverified_context
 
-# ============ 配置 ============
 # DeepSeek 聊天接口
 CHAT_BASE_URL = "https://api.deepseek.com/v1"
 from dotenv import load_dotenv
 load_dotenv()
-CHAT_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")  # 从 .env 读，不硬编码
+CHAT_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 CHAT_MODEL_NAME = "deepseek-v4-pro"
 
 # 本地 embedding 模型
