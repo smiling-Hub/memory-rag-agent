@@ -25,7 +25,7 @@ load_dotenv()
 CHAT_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
 CHAT_MODEL_NAME = "deepseek-v4-pro"
 
-# AI 只能调用这里声明的工具，返回结构化信号，不是猜文字标签。
+# AI 只能调用这里声明的工具，返回结构化结果。
 TOOLS = [
     {
         "type": "function",

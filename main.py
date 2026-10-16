@@ -37,7 +37,7 @@ def _llm():
 
 def ask(user, question):
     """一次完整提问：检索用户自己的记忆 → DeepSeek 组织回答 → 按真实 token 扣费"""
-    # 1. 只从该用户自己的记忆库里检索（隔离的关键）
+    # 1. 只检索该用户自己的记忆库
     ctx = memory.search(user["id"], question, n=3)
     context = "\n".join(f"- {did}: {c}" for did, c in ctx)
 
@@ -53,7 +53,7 @@ def ask(user, question):
     answer = resp.choices[0].message.content
     tokens = getattr(resp.usage, "total_tokens", 0)  # DeepSeek 返回的真实 token 数
 
-    # 3. 按真实 token 扣费（碰钱的核心）
+    # 3. 按真实 token 扣费
     cost = db.charge(user["id"], tokens, note=question[:20])
     return answer, tokens, cost
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""db.py 的单元测试：验证注册/登录/充值/扣费这些「碰钱」逻辑的正确性。
+"""db.py 的单元测试：验证注册、登录、充值、扣费逻辑。
 
 跑法：在 loyal-elephie-demo 目录下  venv/Scripts/python -m pytest tests/ -v
 """
@@ -26,7 +26,7 @@ def test_register_and_login():
     u = db.login("alice", "secret123")
     assert u is not None
     assert u["username"] == "alice"
-    # 关键：库里存的必须是哈希，不是明文密码
+    # 库里存的必须是哈希，不是明文
     assert u["password_hash"] != "secret123"
 
 

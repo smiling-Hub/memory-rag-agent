@@ -191,4 +191,4 @@ try:
 except Exception as e:
     print(f"DeepSeek 调用失败（不影响上面的检索演示）：{type(e).__name__}: {e}")
 
-print("\n演示完成。核心结论：检索已经能把「最相关的记忆」找出来，DeepSeek 负责用这些记忆组织答案。")
+print("\n演示完成。检索找出最相关的记忆，DeepSeek 负责组织答案。")

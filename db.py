@@ -70,8 +70,8 @@ def add_credits(user_id, amount):
 
 
 def charge(user_id, tokens, note=""):
-    """按 token 扣费。关键：一条 SQL 里同时检查余额并扣减，保证原子性（不会超扣）。
-    余额不足抛 ValueError。返回本次扣了多少 credit。"""
+    """按 token 扣费。一条 SQL 里同时检查余额并扣减，保证原子性、不会超扣。
+    余额不足抛 ValueError，返回本次扣了多少 credit。"""
     cost = max(1, -(-tokens // CREDIT_RATE))  # 向上取整，最低扣 1
     with _conn() as c:
         cur = c.execute(
